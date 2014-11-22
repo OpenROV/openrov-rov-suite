@@ -9,6 +9,7 @@ __EOF__
 echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-onrov-suite" >> make_package.sh
 
 while read package; do
+  echo -n $package | awk 'BEGIN{ORS="";} {print " -d", $1}'
   echo -n $package | awk 'BEGIN{ORS="";} {print " -d", $1}' >> make_package.sh
 done < manifest
 
