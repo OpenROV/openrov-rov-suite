@@ -9,7 +9,7 @@ fpm -f -m info@openrov.com -s dir -t deb -a armhf\
 __EOF__
 
 while read package; do
-  echo package | awk '-d {print $1}\' >> make_package.sh
+  echo -n package | awk '-d {print $1}\' >> make_package.sh
 done < manifest
 
 
