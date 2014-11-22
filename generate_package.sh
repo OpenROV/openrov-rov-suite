@@ -15,4 +15,4 @@ done < manifest
 
 echo -n "-v $VERSION_NUMBER-$REAL_GIT_BRANCH --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
 
-echo make_package.sh
+cat make_package.sh
