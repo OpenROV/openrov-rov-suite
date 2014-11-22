@@ -11,7 +11,7 @@ before_script:
 - echo version_number $VERSION_NUMBER
 - echo real_get_branch $REAL_GIT_BRANCH
 - sudo apt-get install software-properties-common
-- sudo add-apt-repository "deb http://build.openrov.com/debian/ stable debian"
+- echo "deb http://build.openrov.com/debian/ stable debian" | sudo tee -a /etc/apt/sources.list
 - sudo wget -O - -q http://build.openrov.com/debian/build.openrov.com.gpg.key | sudo apt-key add -
 - sudo apt-get update -q
 
