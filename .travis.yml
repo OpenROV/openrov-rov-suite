@@ -12,7 +12,7 @@ before_script:
 - echo real_get_branch $REAL_GIT_BRANCH
 - echo "deb http://build.openrov.com/debian/ stable debian" | sudo tee -a /etc/apt/sources.list
 - sudo wget -O - -q http://build.openrov.com/debian/build.openrov.com.gpg.key | sudo apt-key add -
-- sudo dpkg --add-architecture armhf
+- echo "foreign-architecture armhf" > /etc/dpkg/dpkg.cfg.d/architectures
 - sudo apt-get update -q
 
 script:
