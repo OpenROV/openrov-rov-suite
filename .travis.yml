@@ -1,0 +1,38 @@
+language: Groovy
+install: gem install fpm
+node_js:
+- 0.1
+env:
+  global:
+  - VERSION_NUMBER="`git describe --tags | sed 's/^[a-z,A-Z]*//'`"
+  - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
+    | grep $TRAVIS_COMMIT | awk '{print $2}'`"
+
+before_install:
+- echo version_number $VERSION_NUMBER
+- echo real_get_branch $REAL_GIT_BRANCH
+
+install:
+- bash generate_manifest.sh
+- bash generate_package.sh
+- bash make_package.sh
+
+after_success:
+- rm -rf OpenROV/build*
+- mkdir build
+- cp *.deb build/openrov-onrov-suite_latest-${REAL_GIT_BRANCH}_armhf.deb
+- mv *.deb build/
+deploy:
+  provider: s3
+  access_key_id: AKIAIUN4NNHBKIOZE2JA
+  secret_access_key:
+    secure: HndY8whUIMqYa07hqy6b/RvfNBrik2mpBLw0sNiXDcm0mIkT3CSm0R0/tbJK68GebmG+tjGnCf/zbcbjxHw0MwWOF50CZ+3zT0JDTu6SdclFK/nkcWZGmJ9rirBJdISF8/H8/DKyiPJnYE8QMIX2GyacNZPrmpzYiLbb7Hvq+vo=
+  bucket: openrov-software-nightlies
+  skip_cleanup: true
+  region: us-west-2
+  endpoint: bucket-name.s3-website-us-west-2.amazonaws.com
+  local-dir: build
+  upload-dir: openrov-onrov-suite
+  acl: !ruby/string:HighLine::String public_read
+  on:
+    repo: BrianAdams/openrov-onrov-suite
