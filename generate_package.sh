@@ -15,5 +15,5 @@ done < manifest
 
 cat >> make_package.sh << __EOF__
 -v $VERSION_NUMBER-$REAL_GIT_BRANCH
---description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov '
+--description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov 
 __EOF__
