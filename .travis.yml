@@ -10,6 +10,8 @@ env:
 before_script:
 - echo version_number $VERSION_NUMBER
 - echo real_get_branch $REAL_GIT_BRANCH
+- sudo apt-get install software-properties-common
+- sudo add-apt-repository "deb http://build.openrov.com/debian/ stable debian"
 
 script:
 - bash generate_manifest.sh
