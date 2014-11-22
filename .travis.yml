@@ -1,18 +1,17 @@
-language: Groovy
+language: python
 install: gem install fpm
-node_js:
-- 0.1
+
 env:
   global:
   - VERSION_NUMBER="`git describe --tags | sed 's/^[a-z,A-Z]*//'`"
   - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
     | grep $TRAVIS_COMMIT | awk '{print $2}'`"
 
-before_install:
+before_script:
 - echo version_number $VERSION_NUMBER
 - echo real_get_branch $REAL_GIT_BRANCH
 
-install:
+script:
 - bash generate_manifest.sh
 - bash generate_package.sh
 - bash make_package.sh
