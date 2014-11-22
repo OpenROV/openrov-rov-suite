@@ -13,7 +13,7 @@ before_script:
 - echo "deb http://build.openrov.com/debian/ stable debian" | sudo tee -a /etc/apt/sources.list
 - sudo wget -O - -q http://build.openrov.com/debian/build.openrov.com.gpg.key | sudo apt-key add -
 - echo "foreign-architecture armhf" | sudo tee -a /etc/dpkg/dpkg.cfg.d/architectures
-- sudo apt-get update -q
+- sudo apt-get update -m -q
 
 script:
 - bash generate_manifest.sh
