@@ -1,0 +1,23 @@
+{
+  "name": "openrov-onrov-suite",
+  "version": "2.5.1",
+  "description": "Suite of OpenROV projects that are deployed to the ROV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenROV/openrov-onrov-suite.git"
+  },
+  "keywords": [
+    "OpenROV",
+    "Image"
+  ],
+  "author": "BrianAdams",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/OpenROV/openrov-onrov-suite/issues"
+  },
+  "homepage": "https://github.com/OpenROV/openrov-onrov-suite"
+}
