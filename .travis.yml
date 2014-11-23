@@ -1,13 +1,11 @@
 language: python
 install: gem install fpm
-
 env:
   global:
   - VERSION_NUMBER="`cat package.json | grep version | grep -o '[0-9]\.[0-9]\.[0-9]\+'`"
   - BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
   - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
     | grep $TRAVIS_COMMIT | awk '{print $2}'`"
-
 before_script:
 - echo version_number $VERSION_NUMBER
 - echo real_get_branch $REAL_GIT_BRANCH
@@ -18,7 +16,6 @@ before_script:
 - echo "foreign-architecture armhf" | sudo tee -a /etc/dpkg/dpkg.cfg.d/architectures
 - sudo cp preferences_$REAL_GIT_BRANCH /etc/apt/preferences
 - sudo apt-get update -q  || true
-
 script:
 - bash generate_manifest.sh
 - bash generate_package.sh
@@ -26,7 +23,6 @@ script:
 - cp manifest ./stage
 - cp package.json ./stage
 - bash make_package.sh
-
 after_success:
 - rm -rf OpenROV/build*
 - mkdir build
@@ -36,13 +32,13 @@ deploy:
   provider: s3
   access_key_id: AKIAIUN4NNHBKIOZE2JA
   secret_access_key:
-    secure: HndY8whUIMqYa07hqy6b/RvfNBrik2mpBLw0sNiXDcm0mIkT3CSm0R0/tbJK68GebmG+tjGnCf/zbcbjxHw0MwWOF50CZ+3zT0JDTu6SdclFK/nkcWZGmJ9rirBJdISF8/H8/DKyiPJnYE8QMIX2GyacNZPrmpzYiLbb7Hvq+vo=
+    secure: FMLP1/dgTDQ2WvrqkXG1ebvtyIBCk7/1pliKitu35zgTmWmP9q0zn3MlcMr/ZURuyjycmYBvRF6NQ/HzYPV4Pp1sjKQ1AEaBQ4cpoRzX5Qc51ae1Yz05kVNLhbxxk9cu2VBwQr9F5VO5moZ3CfXbY5nOWJsJIA+99V9ARNDJ/aM=
   bucket: openrov-software-nightlies
   skip_cleanup: true
   region: us-west-2
   endpoint: bucket-name.s3-website-us-west-2.amazonaws.com
   local-dir: build
   upload-dir: openrov-onrov-suite
-  acl: !ruby/string:HighLine::String public_read
+  acl: public_read
   on:
-    repo: BrianAdams/openrov-onrov-suite
+    repo: OpenROV/openrov-onrov-suite
