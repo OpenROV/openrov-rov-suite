@@ -13,7 +13,7 @@ while read package; do
   echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", $1">"$2}' >> make_package.sh
 done < manifest
 
-if [ $REAL_GIT_BRANCH -eq "stable" ]
+if [ "$REAL_GIT_BRANCH" -eq "stable" ]
 then
   echo -n "-v $VERSION_NUMBER --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
 else

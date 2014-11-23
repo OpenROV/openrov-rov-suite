@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ $REAL_GIT_BRANCH -eq "master" ]
+if [ "$REAL_GIT_BRANCH" -eq "master" ]
 then
   while read package; do
   #  apt-cache madison $package
