@@ -27,7 +27,7 @@ script:
 after_success:
 - rm -rf OpenROV/build*
 - mkdir build
-- DEBFILE="`ls *.deb`""
+- DEBFILE="`ls *.deb`"
 - cp *.deb build/openrov-onrov-suite_latest-${REAL_GIT_BRANCH}_armhf.deb
 - mv *.deb build/
 deploy:
