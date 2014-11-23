@@ -20,4 +20,6 @@ else
   echo -n "-v $VERSION_NUMBER-$REAL_GIT_BRANCH --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
 fi
 
-cat make_package.sh
+while read line; do
+  echo $line
+done < make_package.sh
