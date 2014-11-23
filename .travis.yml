@@ -42,3 +42,5 @@ deploy:
   acl: public_read
   on:
     repo: OpenROV/openrov-onrov-suite
+    all_branches: true
+    condition: "($REAL_GIT_BRANCH = master )||($REAL_GIT_BRANCH = pre-release )||($REAL_GIT_BRANCH = stable)"
