@@ -11,7 +11,7 @@ then
   done < inventory
 else
   # When branching from development, you must also create a new manifest_release to lock the dependency versions
-  cp manifest_release manifest
+  cp manifest_release
 fi
 
 cat manifest
