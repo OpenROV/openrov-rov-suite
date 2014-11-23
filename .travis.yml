@@ -46,10 +46,5 @@ deploy:
     repo: OpenROV/openrov-onrov-suite
     all_branches: true
     condition: "($REAL_GIT_BRANCH = master )||($REAL_GIT_BRANCH = pre-release )||($REAL_GIT_BRANCH = stable)"
-
-notifications:
-  webhooks:
-    urls:
-      - http://build.openrov.com:8080/job/OpenROV-generic-upload-deb-to-repo/buildWithParameters?token=$JENKINS_TOKEN_NAME&urlToDebPackage=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/openrov-onrov-suite%2F$DEBFILE&branch=$REAL_GIT_BRANCH
-    on_success: always  # options: [always|never|change] default: always
-    on_failure: never  # options: [always|never|change] default: always
+after_deploy:
+- wget http://build.openrov.com:8080/job/OpenROV-generic-upload-deb-to-repo/buildWithParameters?token=$JENKINS_TOKEN_NAME&urlToDebPackage=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/openrov-onrov-suite%2F$DEBFILE&branch=$REAL_GIT_BRANCH
