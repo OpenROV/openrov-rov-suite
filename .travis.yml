@@ -4,7 +4,7 @@ env:
   global:
   - VERSION_NUMBER="`cat package.json | grep version | grep -o '[0-9]\.[0-9]\.[0-9]\+'`"
   - BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-  - secure: "ErvPkLWvTSoEGaN8Eqd6SuQjyUlZ6fHQKM/FZ3LYXJSX+EhIEQ7hqg5r81ED7ryfOVteh5nMUlrMVxOUhFoslN0lBEeZ7SYkaVrOj08YHEs/BPuET9BtAwx6Y9mJoZ4t+qqmHdg/cknuDKIiK2MT6Tj13VLYVN3Rv399Or+D/JU="
+  - secure: "aIqQSgjsgzKkL8udhWhFvlpoCoR/MRvV2VfZAxbd/kuj8bqw/VINdnNbct4Lme5HUZJmzluhBIt72Ew0SvYeiPDyPtaxnx3bE7kiPQ7rmLNyy6aND4eJ+E/5mxJqcUvrV+wnm2WAo+1+t1RXRgzB7kvce6x8wIHf1+1bO2CMXB8="
   - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
     | grep $TRAVIS_COMMIT | awk '{print $2}'`"
 before_script:
