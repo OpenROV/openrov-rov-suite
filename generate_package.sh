@@ -16,9 +16,9 @@ done < manifest
 
 if [ "$REAL_GIT_BRANCH" = "stable" ]
 then
-  echo -n " -v $VERSION_NUMBER+$BUILD_NUMBER --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
+  echo -n " -v $VERSION_NUMBER+$BUILD_NUMBER.`git rev-parse --short HEAD` --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
 else
-  echo -n " -v $VERSION_NUMBER-$REAL_GIT_BRANCH+$BUILD_NUMBER --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
+  echo -n " -v $VERSION_NUMBER-$REAL_GIT_BRANCH+$BUILD_NUMBER.`git rev-parse --short HEAD` --description 'OpenROV suite of projects that run on the ROV directly' .=/opt/openrov" >> make_package.sh
 fi
 
 cat make_package.sh

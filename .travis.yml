@@ -3,7 +3,7 @@ install: gem install fpm
 
 env:
   global:
-  - VERSION_NUMBER="`cat package.json | grep version | grep -o '[0-9]\.[0-9]\.[0-9]\+'``git rev-parse --short HEAD`"
+  - VERSION_NUMBER="`cat package.json | grep version | grep -o '[0-9]\.[0-9]\.[0-9]\+'`"
   - BUILD_NUMBER=$TRAVIS_JOB_ID
   - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
     | grep $TRAVIS_COMMIT | awk '{print $2}'`"
