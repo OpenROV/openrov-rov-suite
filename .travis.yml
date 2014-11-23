@@ -23,7 +23,6 @@ script:
 - mkdir suite
 - cp manifest ./suite
 - cp package.json ./suite
-- ls ./stage
 - bash make_package.sh
 after_success:
 - rm -rf OpenROV/build*
