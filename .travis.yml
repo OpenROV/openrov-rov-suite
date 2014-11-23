@@ -20,9 +20,10 @@ before_script:
 script:
 - bash generate_manifest.sh
 - bash generate_package.sh
-- mkdir stage
-- cp manifest ./stage
-- cp package.json ./stage
+- mkdir suite
+- cp manifest ./suite
+- cp package.json ./suite
+- ls ./stage
 - bash make_package.sh
 after_success:
 - rm -rf OpenROV/build*
