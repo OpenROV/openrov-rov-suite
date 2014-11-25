@@ -7,7 +7,7 @@ set -e
 set -x
 __EOF__
 
-echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-onrov-suite" >> make_package.sh
+echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-rov-suite" >> make_package.sh
 
 while read package; do
   echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (>="$2")\""}'
