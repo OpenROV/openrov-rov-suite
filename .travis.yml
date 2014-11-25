@@ -28,7 +28,7 @@ after_success:
 - rm -rf OpenROV/build*
 - mkdir build
 - DEBFILE="`ls *.deb`"
-- cp *.deb build/openrov-onrov-suite_latest-${REAL_GIT_BRANCH}_armhf.deb
+- cp *.deb build/openrov-rov-suite_latest-${REAL_GIT_BRANCH}_armhf.deb
 - mv *.deb build/
 deploy:
   provider: s3
@@ -40,10 +40,10 @@ deploy:
   region: us-west-2
   endpoint: bucket-name.s3-website-us-west-2.amazonaws.com
   local-dir: build
-  upload-dir: openrov-onrov-suite
+  upload-dir: openrov-rov-suite
   acl: public_read
   on:
-    repo: OpenROV/openrov-onrov-suite
+    repo: OpenROV/openrov-rov-suite
     all_branches: true
     condition: "($REAL_GIT_BRANCH = master )||($REAL_GIT_BRANCH = pre-release )||($REAL_GIT_BRANCH = stable)"
 after_deploy:
