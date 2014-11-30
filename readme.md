@@ -4,9 +4,9 @@ This project serves as a wrapper around all of the subcomponets that make up the
 
 There are three deployment branches for this project:
 
-* master: development branch
-* pre-release: release canidates for the next release
-* stable: released versions of the software
+* master: development branch  [![Build Status](https://travis-ci.org/OpenROV/openrov-rov-suite.svg?branch=master)](https://travis-ci.org/OpenROV/openrov-rov-suite)
+* pre-release: release canidates for the next release [![Build Status](https://travis-ci.org/OpenROV/openrov-rov-suite.svg?branch=pre-release)](https://travis-ci.org/OpenROV/openrov-rov-suite)
+* stable: released versions of the software [![Build Status](https://travis-ci.org/OpenROV/openrov-rov-suite.svg?branch=stable)](https://travis-ci.org/OpenROV/openrov-rov-suite)
 
 In the master branch, the manifest (file + version) of dependent projects is generated from scratch each time getting the most recent versions of all of the dependencies.  In the future we may add an option to include a version number in the inventory file that defines what is in the manifest to effectively "pin" a dependecy at a particular version number.
 
