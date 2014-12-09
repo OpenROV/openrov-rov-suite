@@ -4,6 +4,7 @@ env:
   global:
   - VERSION_NUMBER="`cat package.json | grep version | grep -o '[0-9]\.[0-9]\.[0-9]\+'`"
   - BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+  - secure: "aIqQSgjsgzKkL8udhWhFvlpoCoR/MRvV2VfZAxbd/kuj8bqw/VINdnNbct4Lme5HUZJmzluhBIt72Ew0SvYeiPDyPtaxnx3bE7kiPQ7rmLNyy6aND4eJ+E/5mxJqcUvrV+wnm2WAo+1+t1RXRgzB7kvce6x8wIHf1+1bO2CMXB8="
   - REAL_GIT_BRANCH="`git for-each-ref --format='%(objectname) %(refname:short)' refs/heads
     | grep $TRAVIS_COMMIT | awk '{print $2}'`"
 before_script:
@@ -19,13 +20,14 @@ before_script:
 script:
 - bash generate_manifest.sh
 - bash generate_package.sh
-- mkdir stage
-- cp manifest ./stage
-- cp package.json ./stage
+- mkdir suite
+- cp manifest ./suite
+- cp package.json ./suite
 - bash make_package.sh
 after_success:
 - rm -rf OpenROV/build*
 - mkdir build
+- DEBFILE="`ls *.deb`"
 - cp *.deb build/openrov-rov-suite_latest-${REAL_GIT_BRANCH}_armhf.deb
 - mv *.deb build/
 deploy:
@@ -42,3 +44,7 @@ deploy:
   acl: public_read
   on:
     repo: OpenROV/openrov-rov-suite
+    all_branches: true
+    condition: "($REAL_GIT_BRANCH = master )||($REAL_GIT_BRANCH = pre-release )||($REAL_GIT_BRANCH = stable)"
+after_deploy:
+- curl -g http://build.openrov.com:8080/job/OpenROV-generic-upload-deb-to-repo/buildWithParameters -d token=$JENKINS_TOKEN_NAME -d urlToDebPackage=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/openrov-rov-suite%2F$DEBFILE -d branch=$REAL_GIT_BRANCH
