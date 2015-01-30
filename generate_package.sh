@@ -10,8 +10,8 @@ __EOF__
 echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-rov-suite" >> make_package.sh
 
 while read package; do
-  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (>="$2")\""}'
-  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (>="$2")\""}' >> make_package.sh
+  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}'
+  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}' >> make_package.sh
 done < manifest
 
 if [ "$REAL_GIT_BRANCH" = "stable" ]
