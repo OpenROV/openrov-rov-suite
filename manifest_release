@@ -1,10 +1,10 @@
 openrov-avrdude 6.0.1-4
 openrov-cloud9 0.7.0-4
-openrov-cockpit 2.5.1~~pre-release.151.4590e69
+openrov-cockpit 2.5.1~~pre-release.153.ff249d8	
 openrov-dashboard 2.5.1-59.2c0356
 openrov-dtc 1.4-4
 openrov-ino 0.3.6-9
 openrov-mjpeg-streamer 2.0.1-7
 openrov-proxy 0.1-20
 openrov-samba-config 0.1-5
-openrov-arduino-firmware 2.5.2-pre-release.133.d4916b5
+openrov-arduino-firmware 2.5.2-pre-release.136.9517f67
