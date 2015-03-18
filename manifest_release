@@ -7,4 +7,4 @@ openrov-ino 0.3.7-1~24.b8288ca
 openrov-mjpeg-streamer 2.0.1-1~19.a48d422
 openrov-proxy 1.0.0~~pre-release.48.7ef34f9
 openrov-samba-config 0.1~10
-openrov-arduino-firmware 2.5.2-pre-release.136.9517f67
+openrov-arduino-firmware 2.5.2~~pre-release.139.cd2a3a9
