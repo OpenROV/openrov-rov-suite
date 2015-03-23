@@ -8,6 +8,8 @@ There are three deployment branches for this project:
 * pre-release: release canidates for the next release [![Build Status](https://travis-ci.org/OpenROV/openrov-rov-suite.svg?branch=pre-release)](https://travis-ci.org/OpenROV/openrov-rov-suite)
 * stable: released versions of the software [![Build Status](https://travis-ci.org/OpenROV/openrov-rov-suite.svg?branch=stable)](https://travis-ci.org/OpenROV/openrov-rov-suite)
 
+For submitting issues use the primary software repository: https://github.com/OpenROV/openrov-software/issues
+
 In the master branch, the manifest (file + version) of dependent projects is generated from scratch each time getting the most recent versions of all of the dependencies.  In the future we may add an option to include a version number in the inventory file that defines what is in the manifest to effectively "pin" a dependecy at a particular version number.
 
 When moving from master to the pre-release branch, we checkin an updated version of the manifest_release file.  This contains the version number of each packages associated with the release.  If we make patches to the dependent  projects we must manually update the version number.
