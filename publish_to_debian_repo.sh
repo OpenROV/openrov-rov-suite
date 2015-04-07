@@ -9,10 +9,11 @@ BRANCH=$2
 JENKINS_TOKEN_NAME=vd2sf9fk84mKm4G
 SUITEURL=${BASEURL}openrov-rov-suite/$1
 
-#TEMPDIR=`mktemp -d` && pushd $TEMPDIR
+TEMPDIR=`mktemp -d` && pushd $TEMPDIR
 curl -O $SUITEURL
+popd
 #get the list of dependent files
-for ITEM in `dpkg -I $1 | grep Depends: | sed 's/ (=/_/g' | sed 's/)/_armhf.deb/g' | sed 's/Depends: //g' | sed 's/ //g' | tr ',' '\n'`
+for ITEM in `dpkg -I ${TEMPDIR}/${1} | grep Depends: | sed 's/ (=/_/g' | sed 's/)/_armhf.deb/g' | sed 's/Depends: //g' | sed 's/ //g' | tr ',' '\n'`
 do
   RAWNAME=$(echo $ITEM | awk -F '[_]' '{print $1}')
   URL=$(cat nightly-repos | grep $RAWNAME | awk -F '[  ]' '{print $2}'|sed 's/?prefix=//' )
@@ -24,5 +25,4 @@ done
 curl -g http://openrov-build-test.elasticbeanstalk.com:8080/job/OpenROV-generic-upload-deb-to-repo/buildWithParameters -d token=$JENKINS_TOKEN_NAME -d urlToDebPackage=$SUITEURL -d branch=$BRANCH
 echo "publishing $1"
 
-#popd
-#rm -rf $TEMPDIR
+rm -rf $TEMPDIR
