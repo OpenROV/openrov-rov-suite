@@ -1,12 +1,11 @@
 #!/bin/bash
-#docker run -t --rm -v $(pwd):/work -w /work smashwilson/curl /bin/bash publish_to_debian_repo.sh openrov-rov-suite_30.0.0~~pre-release.70.d71e4da_armhf.deb pre-release
+#docker run -t --rm -e "JENKINS_TOKEN_NAME=$JENKINS_TOKEN_NAME"-v $(pwd):/work -w /work smashwilson/curl /bin/bash publish_to_debian_repo.sh openrov-rov-suite_30.0.0~~pre-release.70.d71e4da_armhf.deb pre-release
 set -e
 
 
 BASEURL=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/
 IFS=$'\n'
 BRANCH=$2
-JENKINS_TOKEN_NAME=vd2sf9fk84mKm4G
 SUITEURL=${BASEURL}openrov-rov-suite/$1
 
 TEMPDIR=`mktemp -d` && pushd $TEMPDIR
