@@ -3,14 +3,28 @@ set -ex
 
 if [ "$REAL_GIT_BRANCH" = "master" ]
 then
-  echo "deb http://deb-repo.openrov.com/ master debian" | sudo tee -a /etc/apt/sources.list
-  sudo apt-get update -q  || true
+
+  TEMPDIR=`mktemp -d`
+
+  #for each line in the nightly-repos folder
+  #get the latest file from the repo
+  curl -o ${TEMPDIR}/nightlies.xml http://openrov-software-nightlies.s3-us-west-2.amazonaws.com
+  ls ${TEMPDIR}/nightlies.xml
   while read package; do
-  #  apt-cache madison $package
-  #  apt-cache madison $package | awk '{print $1,$3}' >> manifest
-    apt-cache policy $package | grep Candidate: | awk -v pkg_name=$package '{print pkg_name, $2}'
-    apt-cache policy $package | grep Candidate: | awk -v pkg_name=$package '{print pkg_name, $2}' >> manifest
+    echo $package
+  #  cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${package}
+    cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${package} >> ${TEMPDIR}/latest_files.txt
   done < inventory
+
+
+  cat ${TEMPDIR}/latest_files.txt
+  #get the list of dependent files
+  while read item; do
+    echo $item | awk -F'[_/]' '{print $1 " " $3}' >> manifest
+  done < ${TEMPDIR}/latest_files.txt
+
+  rm -rf $TEMPDIR
+
   echo 'Manifest:'
   echo manifest
   echo '--End Manifest--'
