@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+#docker run -t --rm -e "REAL_GIT_BRANCH=master" -v $(pwd):/work -w /work smashwilson/curl /bin/bash generate_manifest.sh
+
 if [ "$REAL_GIT_BRANCH" = "master" ]
 then
 

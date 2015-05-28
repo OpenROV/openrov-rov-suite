@@ -32,12 +32,14 @@ while read_dom; do
     if [ $i == 3 ] ; then
         i=0
         if [[ "${parsed[1]}" =~ $1 ]] ; then
-          todate=$(date -d "${parsed[2]}" "+%s" )
-          cond=$(date -d "$result" "+%s")
-          if [ ${todate} -ge ${cond} ];
-          then
-	          result=${parsed[2]}
-            return_value=${parsed[0]}
+          if [[ ! "${parsed[1]}" =~ latest ]]; then
+            todate=$(date -d "${parsed[2]}" "+%s" )
+            cond=$(date -d "$result" "+%s")
+            if [ ${todate} -ge ${cond} ];
+            then
+  	          result=${parsed[2]}
+              return_value=${parsed[0]}
+            fi
           fi
         fi
     fi
