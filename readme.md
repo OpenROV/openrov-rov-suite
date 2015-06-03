@@ -23,4 +23,4 @@ On an openrov image, you can manually update with the following commands:
 ```
 sudo apt-get update
 sudo apt-get install openrov-rov-suite
-``` 
+```   
