@@ -10,8 +10,13 @@ __EOF__
 echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-rov-suite" >> make_package.sh
 
 while read package; do
-  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}'
-  echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}' >> make_package.sh
+  if [ $package == "openrov-image-customization" ]; then
+    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" (="$2")\""}'
+    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" (="$2")\""}' >> make_package.sh
+  else
+    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}'
+    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}' >> make_package.sh
+  fi
 done < manifest
 
 if [ "$REAL_GIT_BRANCH" = "stable" ]
