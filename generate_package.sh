@@ -8,14 +8,20 @@ set -x
 __EOF__
 
 echo -n "fpm -f -m info@openrov.com -s dir -t deb -a armhf -n openrov-rov-suite" >> make_package.sh
+if [ "$REAL_GIT_BRANCH" = "master" ]
+then
+  COMPARATOR=">="
+else
+  COMPARATOR="="
+fi
 
 while read package; do
   if [[ "$package" =~ ^openrov-image-customization.* ]]; then
-    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" (="$2")\""}'
-    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" (="$2")\""}' >> make_package.sh
+    echo -n $package | awk -v COMPARATOR=$COMPARATOR 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" ("COMPARATOR $2")\""}'
+    echo -n $package | awk -v COMPARATOR=$COMPARATOR 'BEGIN{ORS="";} {!seen[$1]++} {print " --deb-pre-depends", "\""$1" ("COMPARATOR $2")\""}' >> make_package.sh
   else
-    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}'
-    echo -n $package | awk 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" (="$2")\""}' >> make_package.sh
+    echo -n $package | awk -v COMPARATOR=$COMPARATOR 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" ("COMPARATOR $2")\""}'
+    echo -n $package | awk -v COMPARATOR=$COMPARATOR 'BEGIN{ORS="";} {!seen[$1]++} {print " -d", "\""$1" ("COMPARATOR $2")\""}' >> make_package.sh
   fi
 done < manifest
 
