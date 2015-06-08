@@ -20,7 +20,7 @@ The debian package for the suite is built in the travis-ci build servers and aut
 
 On an openrov image, you can manually update with the following commands:
 
-```  
+```   
 sudo apt-get update
 sudo apt-get install openrov-rov-suite
 ```
