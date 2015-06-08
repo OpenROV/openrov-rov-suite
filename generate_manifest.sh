@@ -7,7 +7,9 @@ if [ "$REAL_GIT_BRANCH" = "master" ]
 then
 
   TEMPDIR=`mktemp -d`
-
+  if [ -f manifest ]; then
+    rm manifest
+  fi
   #for each line in the nightly-repos folder
   #get the latest file from the repo
   curl -o ${TEMPDIR}/nightlies.xml http://openrov-software-nightlies.s3-us-west-2.amazonaws.com
