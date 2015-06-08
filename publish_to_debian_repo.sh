@@ -16,7 +16,7 @@ curl -O $SUITEURL
 popd
 dpkg -I ${TEMPDIR}/${1}
 #get the list of dependent files
-for LISTITEM in `dpkg -I ${TEMPDIR}/${1} | grep Depends: | sed 's/ (=/_/g' | sed 's/)/_armhf.deb/g' | sed 's/Pre-Depends: //g' | sed 's/Depends: //g' | sed 's/ //g' | tr ',' '\n'`
+for LISTITEM in `dpkg -I ${TEMPDIR}/${1} | grep Depends: | sed 's/ (>=/_/g' | sed 's/ (=/_/g' | sed 's/)/_armhf.deb/g' | sed 's/Pre-Depends: //g' | sed 's/Depends: //g' | sed 's/ //g' | tr ',' '\n'`
 do
   if grep ${LISTITEM} ${TEMPDIR}/pkglist.xml > /dev/null
   then
