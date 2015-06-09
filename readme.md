@@ -19,8 +19,8 @@ The package.json file keeps the primary version number for the suite.  When we m
 The debian package for the suite is built in the travis-ci build servers and automatically pushed to the OpenROV debian repository.
 
 On an openrov image, you can manually update with the following commands:
-
-```    
+ 
+```
 sudo apt-get update
 sudo apt-get install openrov-rov-suite
 ```
