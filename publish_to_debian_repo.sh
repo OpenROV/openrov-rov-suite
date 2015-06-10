@@ -1,5 +1,5 @@
 #!/bin/bash
-#docker run -t --rm -e "JENKINS_TOKEN_NAME=$JENKINS_TOKEN_NAME"-v $(pwd):/work -w /work smashwilson/curl /bin/bash publish_to_debian_repo.sh openrov-rov-suite_30.0.0~~pre-release.70.d71e4da_armhf.deb pre-release
+#docker run -t --rm -e "JENKINS_TOKEN_NAME=$JENKINS_TOKEN_NAME" -v $(pwd):/work -w /work smashwilson/curl /bin/bash publish_to_debian_repo.sh openrov-rov-suite_30.0.0~~pre-release.70.d71e4da_armhf.deb pre-release
 set -e
 
 PGKLIST=deb-repo.openrov.com/dists/${2}/debian/binary-armhf/Packages
