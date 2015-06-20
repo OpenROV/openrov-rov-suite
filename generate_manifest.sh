@@ -16,12 +16,12 @@ then
   ls ${TEMPDIR}/nightlies.xml
   while read package; do
     #need to parse package name and prefix out of nightlies
-    S3prefix=`$package | cut -d= -f2`
-    packagename=`$package | cut -d' ' -f1`
-    echo "Package:" $packagename
-    echo "Prefix" $S3prefix
+    S3prefix=$package | cut -d= -f2
+    packagename=$package | cut -d' ' -f1
+    echo "Package: $packagename"
+    echo "Prefix $S3prefix"
   #  cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${package}
-    cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${S3prefix} >> ${TEMPDIR}/latest_files.txt
+    cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh "${S3prefix}" >> ${TEMPDIR}/latest_files.txt
   done < nightly-repos
 
 
