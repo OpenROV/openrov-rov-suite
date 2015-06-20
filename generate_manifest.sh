@@ -15,10 +15,14 @@ then
   curl -o ${TEMPDIR}/nightlies.xml http://openrov-software-nightlies.s3-us-west-2.amazonaws.com
   ls ${TEMPDIR}/nightlies.xml
   while read package; do
-    echo $package
+    #need to parse package name and prefix out of nightlies
+    S3prefix=package | cut -d= -f2
+    packagename=package | cut -d' ' -f1
+    echo "Package:" $packagename
+    echo "Prefix" $S3prefix
   #  cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${package}
-    cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${package} >> ${TEMPDIR}/latest_files.txt
-  done < inventory
+    cat ${TEMPDIR}/nightlies.xml | ./getLatestFileFromS3.sh ${S3prefix} >> ${TEMPDIR}/latest_files.txt
+  done < nightly-repos
 
 
   cat ${TEMPDIR}/latest_files.txt
