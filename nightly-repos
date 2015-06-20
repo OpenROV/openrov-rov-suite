@@ -1,5 +1,4 @@
 openrov-avrdude http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=avrdude/
-openrov-cockpit http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=cockpit/
 openrov-dashboard http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=dashboard/
 openrov-dtc http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=openrov-dtc/
 openrov-ino http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=ino/
@@ -8,4 +7,3 @@ openrov-proxy http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.c
 openrov-samba-config http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=openrov-samba-config/
 openrov-arduino-firmware http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=arduino-firmware/
 openrov-image-customization http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=image-customization/
-htpdate http://ftp.us.debian.org/debian/pool/main/h/htpdate/
