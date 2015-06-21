@@ -26,7 +26,7 @@ then
   cat ${TEMPDIR}/latest_files.txt
   #get the list of dependent files
   while read item; do
-    echo $item | awk -F'[_/]' '{print $(NF-1) " " $NF}' >> manifest
+    echo $item | awk -F'[_/]' '{print $(NF-2) " " $(NF-1)}' >> manifest
   done < ${TEMPDIR}/latest_files.txt
 
   rm -rf $TEMPDIR
