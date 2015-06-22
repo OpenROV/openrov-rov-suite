@@ -4,5 +4,6 @@ openrov-dtc http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com
 openrov-ino http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=ino/
 openrov-mjpeg-streamer http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=jessie/mjpeg-streamer/
 openrov-proxy http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=proxy/
+openrov-cockpit http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=cockpit/
 openrov-arduino-firmware http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=arduino-firmware/
 openrov-image-customization http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=image-customization/
