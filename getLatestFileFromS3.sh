@@ -33,7 +33,7 @@ while read_dom; do
     if [ $i == 3 ] ; then
         i=0
         if [[ "${parsed[0]}" =~ $target ]] ; then
-          if [[ ! "${parsed[1]}" =~ latest ]]; then
+          if [[ ! "${parsed[0]}" =~ latest ]]; then
             todate=$(date -d "${parsed[2]}" "+%s" )
             cond=$(date -d "$result" "+%s")
             if [ ${todate} -ge ${cond} ];
