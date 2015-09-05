@@ -1,6 +1,6 @@
 {
   "name": "openrov-onrov-suite",
-  "version": "2.5.2",
+  "version": "30.0.3",
   "description": "Suite of OpenROV projects that are deployed to the ROV",
   "main": "index.js",
   "scripts": {
