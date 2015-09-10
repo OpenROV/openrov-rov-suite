@@ -2,7 +2,7 @@ openrov-cockpit 30.0.0~163.0dec0ba
 openrov-dashboard 30.0.0~87.7a0aaca
 openrov-ino 0.3.7-1~24.b8288ca
 openrov-mjpeg-streamer 2.0.1-8~22.a48d422
-openrov-proxy 1.1.0~~979a376
+openrov-proxy 1.2.0~~75.0631468
 openrov-samba-config 0.2~15
 openrov-arduino-firmware 30.0.0~149.1713589
 openrov-image-customization 30.0.3~49.c1ebdd2
