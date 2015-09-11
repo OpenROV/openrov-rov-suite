@@ -1,6 +1,5 @@
 #!/bin/bash
-set -x
-set -e
+set -ex
 
 #This script will take a package, sign the package, and then move
 #the pacakge in to the S3 backed debian repository.  It requires a gpg keyring to
@@ -12,7 +11,7 @@ mkdir -p $TMPDIR
 OUTPUT_DIR=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
 mkdir $OUTPUT_DIR/packages
 #standard command-line argument handler: http://www.shelldorado.com/goodcoding/cmdargs.html
-filename=
+fileURL=
 while getopts c:m:a:s:k:p:i:f: opt
 do
     case "$opt" in
@@ -24,7 +23,7 @@ do
       p)  GPG_PASSPHRASE="$OPTARG";;
       P)  GPG_PASSPHRASE_FILE="$OPTARG";;
       i)  KEYID="$OPTARG";;
-      f)  filename="$OPTARG";;
+      f)  fileURL="$OPTARG";;
       \?)		# unknown flag
       	  echo >&2 \
 	  "usage: $0 [-c deb_codename] \
@@ -35,14 +34,14 @@ do
                [-p gpg_passphrase] \
                [-P gpg_passphrase_filename] \
                [-i gpg_key_id] \
-               [-f filename] [file ...]"
+               [-f fileURL] [url ...]"
 	  exit 1;;
     esac
 done
 shift `expr $OPTIND - 1`
 
 while test $# -gt 0; do
-  filename=$1
+  fileURL=$1
   shift
 done
 
@@ -88,19 +87,25 @@ if [ "$KEYID" = "" ]; then
         exit 1
 fi
 
-if [ "$filename" = "" ]; then
-        echo "Filename is required."
+if [ "$fileURL" = "" ]; then
+        echo "fileURL is required."
         exit 1
 fi
 
 
 #docker pull openrov/debs3
+pushd  $OUTPUT_DIR/packages/
+curl -O $fileURL
+popd
 
-cp $filename $OUTPUT_DIR/packages/
+shopt -s nullglob
+array=($OUTPUT_DIR/packages/*)
+filename=${array}
+item=$(basename $filename)
 
 ls $OUTPUT_DIR/packages/
 
-item=$(basename $filename)
+
 chmod 777  $OUTPUT_DIR/packages
 chmod 777  $OUTPUT_DIR/packages/${item}
 
@@ -129,7 +134,7 @@ docker run \
 #       signed a second time from breaking the existing manifests
 #       in the repository. https://github.com/krobertson/deb-s3/issues/46
 set +e
-  wget http://deb-repo.openrov.com/pool/o/op/${item} -O $OUTPUT_DIR/packages/${item}_tmp && mv $OUTPUT_DIR/packages/${item}_tmp $OUTPUT_DIR/packages/${item}
+#  wget http://deb-repo.openrov.com/pool/o/op/${item} -O $OUTPUT_DIR/packages/${item}_tmp && mv $OUTPUT_DIR/packages/${item}_tmp $OUTPUT_DIR/packages/${item}
 set -e
 
 docker run \
