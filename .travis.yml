@@ -37,7 +37,7 @@ deploy:
   region: us-west-2
   endpoint: bucket-name.s3-website-us-west-2.amazonaws.com
   local-dir: build
-  upload-dir: wheezy/openrov-rov-suite
+  upload-dir: jessie/openrov-rov-suite
   acl: public_read
   on:
     repo: OpenROV/openrov-rov-suite
