@@ -42,4 +42,4 @@ deploy:
   on:
     repo: OpenROV/openrov-rov-suite
     all_branches: true
-    condition: "($REAL_GIT_BRANCH = wheezy)"
+    condition: "($REAL_GIT_BRANCH = jessie)"

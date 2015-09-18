@@ -4,7 +4,7 @@ set -e
 #Duplicated switch settings from the underlying publish.sh
 
 
-BASEURL=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/wheezy/
+BASEURL=http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/${DEB_CODENAME}/
 IFS=$'\n'
 BRANCH=$2
 SUITEURL=${BASEURL}openrov-rov-suite/$1
