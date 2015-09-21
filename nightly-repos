@@ -1,4 +1,4 @@
-openrov-avrdude http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=avrdude/
+openrov-avrdude http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=jessie/avrdude/
 openrov-cloud9 http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=cloud9/
 openrov-cockpit http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=cockpit/
 openrov-dashboard http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=dashboard/

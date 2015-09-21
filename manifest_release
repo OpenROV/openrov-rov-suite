@@ -6,4 +6,4 @@ openrov-proxy 1.2.0~~79.1b18bcc
 openrov-samba-config 0.2~15
 openrov-arduino-firmware 30.0.0~149.1713589
 openrov-image-customization 30.0.3~49.c1ebdd2
-openrov-avrdude 1:5.11.1-2~20.ad04c42
+openrov-avrdude 1:5.11.1-2~22.ad04c42
