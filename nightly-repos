@@ -8,5 +8,5 @@ openrov-mjpeg-streamer http://openrov-software-nightlies.s3-us-west-2.amazonaws.
 openrov-proxy http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=proxy/
 openrov-samba-config http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=openrov-samba-config/
 openrov-arduino-firmware http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=arduino-firmware/
-openrov-image-customization http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=wheezy/image-customization/
+openrov-image-customization http://openrov-software-nightlies.s3-website-us-west-2.amazonaws.com/?prefix=jessie/image-customization/
 htpdate http://ftp.us.debian.org/debian/pool/main/h/htpdate/
