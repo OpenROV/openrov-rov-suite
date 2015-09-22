@@ -2,3 +2,5 @@
 scripts/env.sh
 
 scripts/docker/*
+
+*.deb

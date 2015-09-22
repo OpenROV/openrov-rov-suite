@@ -4,5 +4,5 @@ openrov-ino 0.3.7-1~24.b8288ca
 openrov-mjpeg-streamer 2.0.1-9~26.6bcf743
 openrov-proxy 1.2.0~~79.1b18bcc
 openrov-arduino-firmware 30.0.0~149.1713589
-openrov-image-customization 30.0.3~52.cb552b7
+openrov-image-customization 30.0.3~53.b7104db
 openrov-avrdude 1:5.11.1-2~22.ad04c42
