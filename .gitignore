@@ -4,3 +4,5 @@ scripts/env.sh
 scripts/docker/*
 
 *.deb
+
+scripts/dev-env.sh
